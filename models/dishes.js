@@ -1,21 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const dishShema = new Schema({
-	name: {
-		type: String,
-		required: true,
-		unique: true
-	},
-	description: {
-		type: String,
-		required: true,
-	},
-	comments: [commentSchema]
-}, {
-	timestamps: true
-});
-
 const commentSchema = new Schema({
 	rating: {
 		type: Number,
@@ -34,6 +19,23 @@ const commentSchema = new Schema({
 }, {
 	timestamps: true
 });
+
+const dishShema = new Schema({
+	name: {
+		type: String,
+		required: true,
+		unique: true
+	},
+	description: {
+		type: String,
+		required: true,
+	},
+	comments: [commentSchema]
+}, {
+	timestamps: true
+});
+
+
 
 var Dishes = mongoose.model('Dish', dishShema);
 module.exports = Dishes;
